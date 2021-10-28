@@ -1,3 +1,5 @@
+# API para referencia feita em CI4 e autenticação usando JWT.
+
 # Framework CodeIgniter 4
 
 ## O que é CodeIgniter?
