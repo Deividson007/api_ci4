@@ -1,56 +1,56 @@
-# CodeIgniter 4 Framework
+# Framework CodeIgniter 4
 
-## What is CodeIgniter?
+## O que é CodeIgniter?
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](http://codeigniter.com).
+CodeIgniter é um framework web PHP full-stack que é leve, rápido, flexível e seguro.
+Mais informações podem ser encontradas no [site oficial] (http://codeigniter.com).
 
-This repository holds the distributable version of the framework,
-including the user guide. It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+Este repositório contém a versão distribuível da estrutura,
+incluindo o guia do usuário. Foi construído a partir do
+[repositório de desenvolvimento] (https://github.com/codeigniter4/CodeIgniter4).
 
-More information about the plans for version 4 can be found in [the announcement](http://forum.codeigniter.com/thread-62615.html) on the forums.
+Mais informações sobre os planos para a versão 4 podem ser encontradas em [o anúncio] (http://forum.codeigniter.com/thread-62615.html) nos fóruns.
 
-The user guide corresponding to this version of the framework can be found
-[here](https://codeigniter4.github.io/userguide/).
+O guia do usuário correspondente a esta versão da estrutura pode ser encontrado
+[aqui] (https://codeigniter4.github.io/userguide/).
 
 
-## Important Change with index.php
+## Mudança importante com index.php
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+`index.php` não está mais na raiz do projeto! Ele foi movido para dentro da pasta * public *,
+para melhor segurança e separação de componentes.
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+Isso significa que você deve configurar seu servidor web para "apontar" para a pasta * pública * do seu projeto, e
+não para a raiz do projeto. Uma prática melhor seria configurar um host virtual para apontar para lá. Uma prática ruim seria apontar seu servidor web para a raiz do projeto e esperar inserir * public /...*, como o resto de sua lógica e o
+quadro são expostos.
 
-**Please** read the user guide for a better explanation of how CI4 works!
+** Por favor ** leia o guia do usuário para uma melhor explicação de como funciona o CI4!
 
-## Repository Management
+## Gerenciamento de repositório
 
-We use Github issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+Usamos problemas do Github, em nosso repositório principal, para rastrear ** BUGS ** e para rastrear pacotes de trabalho de ** DESENVOLVIMENTO ** aprovados.
+Usamos nosso [fórum] (http://forum.codeigniter.com) para fornecer SUPORTE e para discutir
+SOLICITAÇÕES DE RECURSOS.
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+Este repositório é uma "distribuição", construída por nosso script de preparação de lançamento.
+Problemas com ele podem ser levantados em nosso fórum ou como problemas no repositório principal.
 
-## Contributing
+## Contribuindo
 
-We welcome contributions from the community.
+Aceitamos contribuições da comunidade.
 
-Please read the [*Contributing to CodeIgniter*](https://github.com/codeigniter4/CodeIgniter4/blob/develop/CONTRIBUTING.md) section in the development repository.
+Leia a seção [* Contribuindo para o CodeIgniter *] (https://github.com/codeigniter4/CodeIgniter4/blob/develop/CONTRIBUTING.md) no repositório de desenvolvimento.
 
-## Server Requirements
+## Requisitos do servidor
 
-PHP version 7.3 or higher is required, with the following extensions installed:
+É necessária a versão 7.3 ou superior do PHP, com as seguintes extensões instaladas:
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+- [intl] (http://php.net/manual/en/intl.requirements.php)
+- [libcurl] (http://php.net/manual/en/curl.requirements.php) se você planeja usar a biblioteca HTTP \ CURLRequest
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+Além disso, certifique-se de que as seguintes extensões estejam ativadas em seu PHP:
 
-- json (enabled by default - don't turn it off)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php)
-- xml (enabled by default - don't turn it off)
+- json (ativado por padrão - não desligue)
+- [mbstring] (http://php.net/manual/en/mbstring.installation.php)
+- [mysqlnd] (http://php.net/manual/en/mysqlnd.install.php)
+- xml (ativado por padrão - não desligue)
