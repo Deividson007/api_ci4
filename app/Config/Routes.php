@@ -53,3 +53,13 @@ $routes->get("/dashboard", "Dashboard::index");
 if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
     require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
 }
+
+/**
+ * --------------------------------------------------------------------
+ * Custom Routes
+ * --------------------------------------------------------------------
+ *
+ * Add this line to intercept "OPTIONS" requests
+ */
+
+$routes->options('(:any)', 'BaseController::cors');

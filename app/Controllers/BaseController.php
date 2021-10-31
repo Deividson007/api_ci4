@@ -10,6 +10,7 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\Validation\Exceptions\ValidationException;
 use Psr\Log\LoggerInterface;
+use App\Libraries\CodeIgniterCORS\CodeIgniterCORS;
 
 /**
  * Class BaseController
@@ -50,7 +51,51 @@ class BaseController extends Controller
         // Preload any models, libraries, etc, here.
 
         // E.g.: $this->session = \Config\Services::session();
+
+        // Adicione as linhas abaixo e os métodos "cors ()" e "_cors ()"
+		
+		if (!is_cli())
+		{
+			$this->_cors();
+		}
     }
+
+    public function cors(): void
+	{
+		/**
+        * Este método só é necessário para a rota "$ routes-> options ('(: any)', 'BaseController :: cors')".
+        * Como a rota visa aqui, o método privado "_cors ()" já será chamado de "initController ()".
+        */
+	}
+
+    private function _cors(): void
+	{
+		// Certifique-se de enviar o cabeçalho "X-Requested-With: XMLHttpRequest"
+		
+		if(empty($_SERVER['HTTP_X_REQUESTED_WITH']) || (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && (strtoupper($_SERVER['HTTP_X_REQUESTED_WITH']) === 'XMLHTTPREQUEST')))
+		{
+			// Use o gerenciamento de cabeçalhos CI e envie cabeçalhos
+			
+			$ciCORS = new CodeIgniterCORS(true);
+			$ciCORS->handle($this->request, $this->response);
+			
+			// Use o gerenciamento de cabeçalhos CI, mas não envie cabeçalhos
+            // Se você mesmo precisa enviar cabeçalhos, defina "false"
+            // caso contrário, eles não serão enviados.
+			
+			/*
+			$ciCORS = new CodeIgniterCORS();
+			$ciCORS->handle($this->request, $this->response, false);
+			*/
+			
+			// Use vanilla PHP to manage headers.
+			
+			/*
+			$ciCORS = new CodeIgniterCORS(true);
+			$ciCORS->handle($this->request, $this->response);
+			*/
+		}
+	}
 
     public function getResponse(array $responseBody, int $code = ResponseInterface::HTTP_OK)
     {
@@ -63,7 +108,7 @@ class BaseController extends Controller
     public function getRequestInput(IncomingRequest $request){
         $input = $request->getPost();
         if (empty($input)) {
-            //convert request body to associative array
+            // converte o corpo da solicitação em array associativo
             $input = json_decode($request->getBody(), true);
         }
         return $input;
@@ -71,17 +116,17 @@ class BaseController extends Controller
 
     public function validateRequest($input, array $rules, array $messages =[]){
         $this->validator = Services::Validation()->setRules($rules);
-        //If you replace the $rules array with the name of the group
+        // Se você substituir o array $ rules pelo nome do grupo
         if (is_string($rules)) {
             $validation = config('Validation');
     
-            // If the rule wasn't found in the \Config\Validation, we
-            // should throw an exception so the developer can find it.
+            // Se a regra não foi encontrada em \Config\Validation, nós
+            // deve lançar uma exceção para que o desenvolvedor possa encontrá-la.
             if (!isset($validation->$rules)) {
                 throw ValidationException::forRuleNotFound($rules);
             }
     
-            // If no error message is defined, use the error message in the Config\Validation file
+            // Se nenhuma mensagem de erro for definida, use a mensagem de erro no arquivo Config\Validation
             if (!$messages) {
                 $errorName = $rules . '_errors';
                 $messages = $validation->$errorName ?? [];
