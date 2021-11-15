@@ -63,8 +63,10 @@ class Filters extends BaseConfig
     public $filters = [
         "auth" => [
             "before" => [
-                "dashboard",
-                "dashboard/*"
+                "status/",
+                "status/*",
+                /*"tipodespesa/",
+                "tipodespesa/*"*/
           ],
         ]
     ];
